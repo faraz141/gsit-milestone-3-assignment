@@ -1,4 +1,3 @@
-// import Navbar from '@/components/navbar';
 import Link from 'next/link';
 
 const POSTS_PER_PAGE = 5;
@@ -55,7 +54,7 @@ function Pagination({
         className={`px-4 py-2 rounded-lg ${
           currentPage === 1
             ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            : 'bg-white text-black border-2 border-black  hover:bg-black hover:text-white transition'
+            : 'bg-white text-black border-2 border-black hover:bg-black hover:text-white transition'
         }`}
       >
         Previous
@@ -86,7 +85,7 @@ function Pagination({
         className={`px-4 py-2 rounded-lg ${
           currentPage === totalPages
             ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            : 'bg-white text-black border-2 border-black  hover:bg-black hover:text-white transition'
+            : 'bg-white text-black border-2 border-black hover:bg-black hover:text-white transition'
         }`}
       >
         Next
@@ -98,7 +97,7 @@ function Pagination({
 export default async function BlogIndex({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams?: { page?: string | undefined }; // Add `undefined` to align with the expected type
 }) {
   const page = parseInt(searchParams?.page || '1', 10);
   const posts = await fetchPosts(page);
@@ -107,8 +106,7 @@ export default async function BlogIndex({
 
   return (
     <div className="hero min-h-screen mt-10">
-      {/* <Navbar /> */}
-      <header className=" text-white py-16">
+      <header className="text-white py-16">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl font-extrabold">Welcome to Our Blog</h1>
           <p className="mt-4 text-lg">
