@@ -97,7 +97,7 @@ function Pagination({
 export default async function BlogIndex({
   searchParams,
 }: {
-  searchParams: Record<string, string | undefined>;
+  searchParams?: { page?: string };
 }) {
   const page = parseInt(searchParams?.page || '1', 10);
   const posts = await fetchPosts(page);
