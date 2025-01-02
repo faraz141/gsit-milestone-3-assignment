@@ -97,9 +97,9 @@ function Pagination({
 export default async function BlogIndex({
   searchParams,
 }: {
-  searchParams?: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
-  const page = parseInt(searchParams?.page || '1', 10);
+  const page = parseInt((await searchParams).page || '1', 10);
   const posts = await fetchPosts(page);
   const totalPosts = 100; // Assuming there are 100 total posts from the API
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
