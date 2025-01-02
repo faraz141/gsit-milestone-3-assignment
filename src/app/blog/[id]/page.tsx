@@ -1,7 +1,7 @@
 'use client'; // Needed for client-side hooks like useState and useEffect
 
 import React, { useState, useEffect } from 'react';
-import Navbar from '@/components/navbar'; // Assuming you have a Navbar component
+// import Navbar from '@/components/navbar'; // Assuming you have a Navbar component
 
 interface Comment {
   id: number;
@@ -145,8 +145,8 @@ export default function BlogPost({
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <Navbar />
+    <div className=" min-h-screen mt-20">
+      {/* <Navbar /> */}
       <div className="container mx-auto px-4 py-8">
         <div className="bg-white shadow-lg rounded-lg p-6">
           <h1 className="text-4xl font-bold text-gray-800">{post.title}</h1>
