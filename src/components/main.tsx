@@ -2,11 +2,24 @@ import Link from 'next/link';
 
 const POSTS_PER_PAGE = 5;
 
-async function fetchPosts(page: number) {
+export async function getServerSideProps(context: {
+  query: { page?: string };
+}) {
+  const page = parseInt(context.query.page || '1', 10);
   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
   const allPosts = await res.json();
+  const totalPosts = allPosts.length;
+
   const startIndex = (page - 1) * POSTS_PER_PAGE;
-  return allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  const posts = allPosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+
+  return {
+    props: {
+      posts,
+      currentPage: page,
+      totalPages: Math.ceil(totalPosts / POSTS_PER_PAGE),
+    },
+  };
 }
 
 function Pagination({
@@ -94,16 +107,15 @@ function Pagination({
   );
 }
 
-export default async function BlogIndex({
-  searchParams,
+export default function BlogIndex({
+  posts,
+  currentPage,
+  totalPages,
 }: {
-  searchParams: Record<string, string | undefined>;
+  posts: { id: number; title: string; body: string }[];
+  currentPage: number;
+  totalPages: number;
 }) {
-  const page = parseInt(searchParams?.page || '1', 10);
-  const posts = await fetchPosts(page);
-  const totalPosts = 100; // Assuming there are 100 total posts from the API
-  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
-
   return (
     <div className="hero min-h-screen mt-10">
       <header className="text-white py-16">
@@ -117,7 +129,7 @@ export default async function BlogIndex({
 
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post: { id: number; title: string; body: string }) => (
+          {posts.map((post) => (
             <div
               key={post.id}
               className="bg-black shadow-lg opacity-80 rounded-lg p-6 hover:shadow-2xl transition-shadow"
@@ -137,7 +149,7 @@ export default async function BlogIndex({
         </div>
 
         <Pagination
-          currentPage={page}
+          currentPage={currentPage}
           totalPages={totalPages}
           baseUrl="/blog"
         />
