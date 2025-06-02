@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Faraz’s Personal Blog Web – GSIT Milestone 3 Assignment
 
-## Getting Started
+This is a personal blog website built as part of the GSIT Milestone 3 assignment using **Next.js** and **TypeScript**. The app supports creating, managing, and viewing blog posts with a clean, responsive UI and optimized performance through Next.js features.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- Dynamic blog post creation and display.
+- Server-side rendering (SSR) and static generation (SSG) for fast load times.
+- Responsive design compatible with various devices.
+- Form validation and real-time content updates.
+- Deployed on Vercel for seamless hosting.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Next.js** – React framework with SSR and SSG capabilities.
+- **TypeScript** – Static typing for maintainable code.
+- **CSS / Tailwind CSS** – Styling framework (adjust based on your styles).
+- **Vercel** – Hosting and deployment platform.
+
+---
+
+## 📁 Project Structure
+
+.
+├── components/ # Reusable UI components (Navbar, BlogPost, Form, Footer)
+├── pages/ # Next.js pages and API routes
+├── public/ # Static assets (images, icons)
+├── styles/ # Global and modular CSS / Tailwind styles
+├── utils/ # Utility functions and helpers
+├── next.config.js # Next.js configuration
+├── tsconfig.json # TypeScript configuration
+└── README.md
+
+yaml
+Copy
+Edit
+
+---
+
+## 🎯 Getting Started
+
+### 1. Clone the repository
 
 ```bash
+git clone https://github.com/faraz141/gsit-milestone-3-assignment.git
+cd gsit-milestone-3-assignment
+2. Install dependencies
+bash
+Copy
+Edit
+npm install
+3. Run the development server
+bash
+Copy
+Edit
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 to view the app locally.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📦 Build for Production
+bash
+Copy
+Edit
+npm run build
+npm start
+🌐 Live Demo
+Check the live site here: https://faraz-blog-web.vercel.app/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🙌 Contributing
+Feel free to open issues or submit pull requests for improvements.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📄 License
+This project is licensed under the MIT License.
 
-## Learn More
+🤝 Acknowledgments
+GSIT for the assignment.
 
-To learn more about Next.js, take a look at the following resources:
+Next.js and React communities.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel for deployment.
